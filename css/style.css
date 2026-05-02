@@ -201,6 +201,35 @@ a { text-decoration: none; color: inherit; }
 }
 .location__image img { border-radius: 20px; width: 100%; height: 420px; object-fit: cover; }
 
+/* ===== DISTRICT ===== */
+.district { padding: 100px 0; background: #F9F7F4; }
+.district__sub { text-align: center; font-size: 16px; color: #888; margin-bottom: 52px; }
+.district__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.district__card {
+    background: #fff; border-radius: 20px; padding: 36px;
+    box-shadow: 0 2px 16px rgba(0,0,0,.05);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.district__card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,.1); }
+.district__icon {
+    width: 56px; height: 56px; background: #F9F7F4; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    color: #C4A882; margin-bottom: 20px;
+}
+.district__card-title { font-size: 18px; font-weight: 700; color: #1C1C1E; margin-bottom: 12px; }
+.district__card-text { font-size: 15px; color: #666; line-height: 1.65; margin-bottom: 16px; }
+.district__source {
+    font-size: 12px; font-weight: 600; color: #C4A882;
+    text-decoration: none; letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(196,168,130,.3);
+    padding-bottom: 2px; transition: color .2s;
+}
+.district__source:hover { color: #b09268; }
+
+@media (max-width: 768px) {
+    .district__grid { grid-template-columns: 1fr; }
+}
+
 /* ===== CONTACT ===== */
 .contact { padding: 100px 0; background: #1C1C1E; text-align: center; }
 .contact .section__title { color: #fff; }
