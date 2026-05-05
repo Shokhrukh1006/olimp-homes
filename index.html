@@ -320,14 +320,26 @@
 <script src="js/main.js"></script>
 
 <!-- Баннер согласия на обработку ПД -->
-<div id="consent-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1C1C1E; color:#fff; padding:16px 24px; z-index:9999; font-size:14px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-    <span data-ru='Мы используем виджет обратного звонка. Нажимая кнопку звонка, вы соглашаетесь с <a href="privacy.html" style="color:#C4A882">обработкой персональных данных</a>.' data-uz='Biz qayta qo\'ng\'iroq vidjetidan foydalanamiz. Qo\'ng\'iroq tugmasini bosish orqali siz <a href="privacy.html" style="color:#C4A882">shaxsiy ma\'lumotlarni qayta ishlashga</a> rozisiz.'>Мы используем виджет обратного звонка. Нажимая кнопку звонка, вы соглашаетесь с <a href="privacy.html" style="color:#C4A882">обработкой персональных данных</a>.</span>
-    <button onclick="document.getElementById('consent-banner').style.display='none'; localStorage.setItem('consent','1')" style="background:#C4A882; color:#fff; border:none; padding:8px 20px; border-radius:20px; cursor:pointer; font-size:14px; white-space:nowrap;" data-ru="Понятно" data-uz="Tushunarli">Понятно</button>
+<div id="consent-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1C1C1E; color:#fff; padding:16px 24px; z-index:9999; font-size:14px; align-items:center; gap:16px; flex-wrap:wrap;">
+    <span id="consent-text">Мы используем виджет обратного звонка. Нажимая кнопку звонка, вы соглашаетесь с <a href="privacy.html" style="color:#C4A882">обработкой персональных данных</a>.</span>
+    <button id="consent-btn" onclick="document.getElementById('consent-banner').style.display='none'; localStorage.setItem('consent','1')" style="background:#C4A882; color:#fff; border:none; padding:8px 20px; border-radius:20px; cursor:pointer; font-size:14px; white-space:nowrap;">Понятно</button>
 </div>
 <script>
 if(!localStorage.getItem('consent')) {
     document.getElementById('consent-banner').style.display = 'flex';
 }
+document.addEventListener('langChanged', function(e) {
+    var lang = e.detail;
+    var text = document.getElementById('consent-text');
+    var btn = document.getElementById('consent-btn');
+    if(lang === 'uz') {
+        text.innerHTML = 'Biz qayta qo\'ng\'iroq vidjetidan foydalanamiz. Tugmani bosib, siz <a href="privacy.html" style="color:#C4A882">shaxsiy ma\'lumotlarni qayta ishlashga</a> rozisiz.';
+        btn.textContent = 'Tushunarli';
+    } else {
+        text.innerHTML = 'Мы используем виджет обратного звонка. Нажимая кнопку звонка, вы соглашаетесь с <a href="privacy.html" style="color:#C4A882">обработкой персональных данных</a>.';
+        btn.textContent = 'Понятно';
+    }
+});
 </script>
 <script type="text/javascript" async src="https://sarkortest.sip.uz/callback.js?uid=d0fe6444-e044-45dc-b1bf-41802c41ae9b" charset="utf-8"></script>
 </body>
